@@ -7,11 +7,13 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "postinstall": "prisma generate",
     "lint": "next lint",
     "start": "next start",
     "ts:check": "tsc --noEmit",
-    "check": "npm run lint && npm run ts:check"
+    "check": "npm run lint && npm run ts:check",
+    "postinstall": "prisma generate",
+    "studio": "prisma studio",
+    "dbpush": "prisma db push"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "1.0.6",
