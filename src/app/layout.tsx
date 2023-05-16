@@ -1,6 +1,7 @@
 // Styles & Theme:
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/providers/themeProvider";
+import { cn } from "@/utils/cn";
 
 // Fonts:
 import { Inter } from "next/font/google";
@@ -19,7 +20,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={cn(
+          "bg-white dark:bg-neutral-900",
+          "text-slate-900 dark:text-slate-100",
+          "min-h-screen antialiased",
+          inter.className
+        )}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
