@@ -16,6 +16,9 @@ export const env = createEnv({
     ),
     GITHUB_CLIENT_ID: z.string(),
     GITHUB_CLIENT_SECRET: z.string(),
+    INFOJOBS_CLIENT_ID: z.string(),
+    INFOJOBS_CLIENT_SECRET: z.string(),
+    INFOJOBS_TOKEN: z.string(),
   },
 
   // Client environment variables:
@@ -29,5 +32,8 @@ export const env = createEnv({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+    INFOJOBS_CLIENT_ID: process.env.INFOJOBS_CLIENT_ID,
+    INFOJOBS_CLIENT_SECRET: process.env.INFOJOBS_CLIENT_SECRET,
+    INFOJOBS_TOKEN: process.env.INFOJOBS_TOKEN,
   },
 });
