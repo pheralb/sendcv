@@ -42,4 +42,6 @@ jobs:
         run: npm install
 
       - name: Run typecheck
-        run: npm run check
+        run: npm run ts:check
+        env:
+          SKIP_ENV_VALIDATION: true
