@@ -9,7 +9,9 @@
     "dev": "next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "ts:check": "tsc --noEmit",
+    "check": "npm run lint && npm run ts:check"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "1.0.6",
