@@ -17,14 +17,16 @@ export async function getOffers() {
   const { items }: { items: APIResultOffer[] } = await res.json();
 
   const listOfOffers = items.map((item) => {
-    const { id, title, province, experienceMin, link, teleworking } = item;
+    const { id, title, province, experienceMin, link, teleworking, author } = item;
     return {
       id,
       title,
       province: province.value,
       experienceMin: experienceMin.value,
-      link,
+      infojobsUrl: link,
       teleworking: teleworking?.value ?? "No especificado",
+      authorName: author.name,
+      authorProfileImg: author.logoUrl
     };
   });
 

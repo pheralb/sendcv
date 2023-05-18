@@ -5,6 +5,7 @@ export interface Offer {
   experienceMin: string;
   link: string;
   teleworking: string;
+  author: Author
 }
 
 export interface APIResultOffer {
