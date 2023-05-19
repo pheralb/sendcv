@@ -16,7 +16,12 @@ interface SidebarItemProps {
 
 const SidebarItem = (props: SidebarItemProps) => {
   return (
-    <div className={cn(props.border && "border-b border-neutral-700 pb-4")}>
+    <div
+      className={cn(
+        props.border && "border-b border-neutral-700 pb-4",
+        "animate-in slide-in-from-left-2"
+      )}
+    >
       <TooltipProvider delayDuration={0.2}>
         <Tooltip>
           <TooltipTrigger
