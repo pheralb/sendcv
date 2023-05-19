@@ -1,10 +1,10 @@
 import { env } from "@/env.mjs";
-import { iDictionaryID, APIResultDictionary } from "@/types/dictionary";
+import type { iDictionaryID, APIResultDictionary } from "@/types/dictionary";
 
 export const getFromDictionaryUrl = "https://api.infojobs.net/api/1/dictionary";
 
 export async function getFromDictionary(parameter: iDictionaryID) {
-  const APIUrlWithParameter = `${getFromDictionary}/${parameter}`;
+  const APIUrlWithParameter = `${getFromDictionaryUrl}/${parameter}`;
 
   const res = await fetch(APIUrlWithParameter, {
     headers: {
@@ -14,7 +14,7 @@ export async function getFromDictionary(parameter: iDictionaryID) {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const data = await res.json();
+  const data = await res.json() as APIResultDictionary[];
 
   const dictionaryResult = data.map((item: APIResultDictionary) => {
     const { id, value, key } = item;
