@@ -19,7 +19,7 @@ const ChangeTheme = () => {
             <MoonIcon strokeWidth={iconStroke} size={iconSize} />
           )
         }
-        label={theme === "light" ? "Dark Mode" : "Light Mode"}
+        label={theme === "light" ? "Modo oscuro" : "Modo claro"}
       />
     </button>
   );
