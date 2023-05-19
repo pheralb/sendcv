@@ -25,6 +25,7 @@
     "lucide-react": "0.216.0",
     "next": "13.4.2",
     "next-auth": "4.22.1",
+    "next-intl": "2.14.2",
     "next-themes": "0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
