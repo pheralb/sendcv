@@ -5,6 +5,9 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        "dark": "#222222",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
