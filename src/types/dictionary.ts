@@ -1,0 +1,55 @@
+export interface APIResultDictionary {
+  id: number;
+  value: string;
+  key: string;
+  order?: number;
+  parent?: number;
+}
+
+export type iDictionaryID =
+  | "availability"
+  | "candidate-experience"
+  | "candidate-subsegment"
+  | "category"
+  | "channel"
+  | "city"
+  | "contract-type"
+  | "country"
+  | "driver-license"
+  | "employment-status"
+  | "employer-type"
+  | "experience-min"
+  | "gender"
+  | "grade"
+  | "id-type"
+  | "industry"
+  | "language"
+  | "last-job-search"
+  | "legal-form"
+  | "manager-professional-level"
+  | "mandatory-steps"
+  | "offer-residence"
+  | "offer-state"
+  | "periodos-intervalo"
+  | "professional-level"
+  | "province"
+  | "reading-level"
+  | "region"
+  | "report-reasons"
+  | "reporting-to"
+  | "salary-benefits"
+  | "salary-period"
+  | "salary-quantity"
+  | "salary-range"
+  | "skill-level"
+  | "speaking-level"
+  | "staff"
+  | "study"
+  | "study-detail"
+  | "subcategory"
+  | "teleworking"
+  | "timeline-event"
+  | "url-type"
+  | "work-permit"
+  | "workday"
+  | "writing-level";
