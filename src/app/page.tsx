@@ -1,11 +1,10 @@
 import Container from "@/components/container";
 import JobCard from "@/components/job/card";
+
 import { getOffers } from "@/server/services/getOffers";
-import { ExternalLink } from "@/ui/link";
 
 export default async function Home() {
   const listOfOffers = await getOffers();
-  console.log(listOfOffers);
   return (
     <>
       <section className="mb-5 border-b border-neutral-300 dark:border-neutral-800">

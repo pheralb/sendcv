@@ -19,9 +19,9 @@ const MainSidebarContent = () => {
   return (
     <nav
       className={cn(
-        "fixed overflow-y-auto overflow-x-hidden border-r border-neutral-600 dark:border-neutral-800 md:pb-10",
+        "fixed overflow-y-auto overflow-x-hidden md:pb-10",
         "md:left-0 md:top-0 md:h-full md:w-14",
-        "bottom-0 h-14 w-full border-t"
+        "bottom-0 h-14 w-full"
       )}
     >
       <div
