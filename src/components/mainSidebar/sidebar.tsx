@@ -1,12 +1,14 @@
 import type { ReactNode } from "react";
 import { Link } from "@/ui/link";
-
-import House from "@/ui/icons/house";
-import { Search } from "lucide-react";
+import { cn } from "@/utils/cn";
 
 import SidebarItem from "./sidebarItem";
+
+import { Search } from "lucide-react";
+import House from "@/ui/icons/house";
 import ChangeTheme from "../changeTheme";
-import { cn } from "@/utils/cn";
+import AuthForSidebar from "../auth/forSidebar";
+import About from "../about";
 
 interface SidebarProps {
   children: ReactNode;
@@ -27,14 +29,11 @@ const MainSidebarContent = () => {
       <div
         className={cn(
           "flex items-center justify-center md:flex-col md:space-x-0 md:space-y-7 md:py-7",
-          "space-x-6 py-4"
+          "space-x-6 py-4 pb-3"
         )}
       >
         <Link href="/">
-          <SidebarItem
-            icon={<House width={22} />}
-            label="Inicio"
-          />
+          <SidebarItem icon={<House width={22} />} label="Inicio" />
         </Link>
         <a>
           <SidebarItem
@@ -43,6 +42,8 @@ const MainSidebarContent = () => {
           />
         </a>
         <ChangeTheme />
+        <About />
+        <AuthForSidebar />
       </div>
     </nav>
   );
@@ -52,7 +53,7 @@ const Sidebar = (props: SidebarProps) => {
   return (
     <section className="min-h-screen">
       <MainSidebarContent />
-      <main className={cn("ml-0 md:ml-14")}>{props.children}</main>
+      <main className={cn("mb-4 ml-0 md:ml-14")}>{props.children}</main>
     </section>
   );
 };
