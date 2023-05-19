@@ -5,7 +5,6 @@ export const getOffersUrl =
   "https://api.infojobs.net/api/2/offer?category=informatica-telecomunicaciones";
 
 export async function getOffers() {
-
   const res = await fetch(getOffersUrl, {
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +16,8 @@ export async function getOffers() {
   const { items }: { items: APIResultOffer[] } = await res.json();
 
   const listOfOffers = items.map((item) => {
-    const { id, title, province, experienceMin, link, teleworking, author } = item;
+    const { id, title, province, experienceMin, link, teleworking, author } =
+      item;
     return {
       id,
       title,
@@ -25,8 +25,7 @@ export async function getOffers() {
       experienceMin: experienceMin.value,
       infojobsUrl: link,
       teleworking: teleworking?.value ?? "No especificado",
-      authorName: author.name,
-      authorProfileImg: author.logoUrl
+      author,
     };
   });
 
