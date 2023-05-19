@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "bg-neutral-200 dark:bg-neutral-900",
+          "bg-neutral-200 dark:bg-dark",
           "text-slate-900 dark:text-slate-100",
           "min-h-screen antialiased",
           inter.className
