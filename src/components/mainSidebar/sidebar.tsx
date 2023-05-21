@@ -53,7 +53,7 @@ const Sidebar = (props: SidebarProps) => {
   return (
     <section className="min-h-screen">
       <MainSidebarContent />
-      <main className={cn("mb-4 ml-0 md:ml-14")}>{props.children}</main>
+      <main className={cn("ml-0 md:ml-14")}>{props.children}</main>
     </section>
   );
 };

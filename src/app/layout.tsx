@@ -1,6 +1,5 @@
 // Styles & Theme:
 import "@/styles/globals.css";
-import { ThemeProvider } from "@/providers/themeProvider";
 import { cn } from "@/utils/cn";
 
 // Global Sidebar:
@@ -9,6 +8,9 @@ import Sidebar from "@/components/mainSidebar/sidebar";
 // Fonts:
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
+
+// Providers:
+import { ThemeProvider } from "@/providers/themeProvider";
 
 // Metadata:
 export const metadata = {

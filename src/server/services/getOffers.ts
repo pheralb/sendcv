@@ -12,7 +12,6 @@ export async function getOffers() {
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { items }: { items: APIResultOffer[] } = await res.json();
 
   const listOfOffers = items.map((item) => {
