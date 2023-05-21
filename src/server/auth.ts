@@ -1,48 +1,29 @@
-import { type GetServerSidePropsContext } from "next";
-import {
-  getServerSession,
-  type NextAuthOptions,
-  type DefaultSession,
-} from "next-auth";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import lucia from "lucia-auth";
+import { nextjs } from "lucia-auth/middleware";
 import { env } from "@/env.mjs";
-import { prisma } from "@/server/db";
+
+// Adapter:
+import prisma from "@lucia-auth/adapter-prisma";
+import { PrismaClient } from "@prisma/client";
 
 // Providers:
-import GithubProvider from "next-auth/providers/github";
+import { github } from "@lucia-auth/oauth/providers";
 
-declare module "next-auth" {
-  interface Session extends DefaultSession {
-    user: {
-      id: string;
-      // ...other properties
-      // role: UserRole;
-    } & DefaultSession["user"];
-  }
-}
-
-export const authOptions: NextAuthOptions = {
-  callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+export const auth = lucia({
+  adapter: prisma(new PrismaClient()),
+  env: process.env.NODE_ENV === "development" ? "DEV" : "PROD",
+  middleware: nextjs(),
+  transformDatabaseUser: (userData) => {
+    return {
+      userId: userData.id,
+      username: userData.username,
+    };
   },
-  adapter: PrismaAdapter(prisma),
-  providers: [
-    GithubProvider({
-      clientId: env.GITHUB_CLIENT_ID,
-      clientSecret: env.GITHUB_CLIENT_SECRET,
-    }),
-  ],
-};
+});
 
-export const getServerAuthSession = (ctx: {
-  req: GetServerSidePropsContext["req"];
-  res: GetServerSidePropsContext["res"];
-}) => {
-  return getServerSession(ctx.req, ctx.res, authOptions);
-};
+export const githubAuth = github(auth, {
+  clientId: env.GITHUB_CLIENT_ID ?? "",
+  clientSecret: env.GITHUB_CLIENT_SECRET ?? "",
+});
+
+export type Auth = typeof auth;

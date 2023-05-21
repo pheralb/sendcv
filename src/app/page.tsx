@@ -22,7 +22,7 @@ export default async function Home() {
       <Container>
         <div className="flex flex-col space-y-2">
           {listOfOffers.map((offer) => (
-            <JobCard key={offer.id} {...offer} />
+            <JobCard key={offer.id} link={offer.infojobsUrl} {...offer} />
           ))}
         </div>
       </Container>
