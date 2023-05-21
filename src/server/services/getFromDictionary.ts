@@ -13,7 +13,6 @@ export async function getFromDictionary(parameter: iDictionaryID) {
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const data = await res.json() as APIResultDictionary[];
 
   const dictionaryResult = data.map((item: APIResultDictionary) => {
