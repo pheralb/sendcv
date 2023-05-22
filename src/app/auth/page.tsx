@@ -2,17 +2,25 @@
 
 import { useState } from "react";
 import { cn } from "@/utils/cn";
+import { signIn } from "next-auth/react";
 
 import { Button } from "@/ui/button";
-import { Label } from "@/ui/label";
-import { Input } from "@/ui/input";
+import { toast } from "sonner";
+import { GithubIcon } from "lucide-react";
 
 const Page = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const loginWithGithub = async () => {
-    setIsLoading(true);
-    //router.push("/api/oauth?provider=github");
+  const handleLogin = async (provider: string) => {
+    setLoading(true);
+    try {
+      await signIn(provider, {
+        callbackUrl: `/app`,
+      });
+    } catch (error) {
+      toast.error("Unable to log in. Please try again later.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -22,9 +30,13 @@ const Page = () => {
       )}
     >
       <h2 className="mb-2 text-2xl">Iniciar sesión</h2>
-      <a href="/api/oauth?provider=github" className="button">
-				Continue with Github
-			</a>
+      <Button
+        icon={<GithubIcon width={20} />}
+        onClick={() => handleLogin("github")}
+        loadingstatus={loading}
+      >
+        <span>Continue with Github</span>
+      </Button>
     </div>
   );
 };
