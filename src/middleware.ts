@@ -1,29 +1,44 @@
-import { NextRequest, NextResponse } from "next/server";
-import { SESSION_COOKIE_NAME } from "lucia-auth";
+import { getToken } from "next-auth/jwt";
+import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
 
-export async function middleware(req: NextRequest) {
-  
-  let sessionId = req.cookies.get(SESSION_COOKIE_NAME)?.value;
-  const isAuthPage = req.nextUrl.pathname.startsWith("/auth");
+export default withAuth(
+  async function middleware(req) {
+    const token = await getToken({ req });
+    const isAuth = !!token;
+    const isAuthPage = req.nextUrl.pathname.startsWith("/auth");
 
-  if (isAuthPage) {
-    if (sessionId) {
-      return NextResponse.redirect(new URL("/profile", req.url));
+    if (isAuthPage) {
+      if (isAuth) {
+        return NextResponse.redirect(new URL("/app", req.url));
+      }
+
+      return null;
     }
-    return null;
-  }
 
-  if (!sessionId) {
-    let from = req.nextUrl.pathname;
-    if (req.nextUrl.search) {
-      from += req.nextUrl.search;
+    if (!isAuth) {
+      let from = req.nextUrl.pathname;
+      if (req.nextUrl.search) {
+        from += req.nextUrl.search;
+      }
+
+      return NextResponse.redirect(
+        new URL(`/auth?from=${encodeURIComponent(from)}`, req.url)
+      );
     }
-    return NextResponse.redirect(
-      new URL(`/auth?from=${encodeURIComponent(from)}`, req.url)
-    );
+  },
+  {
+    callbacks: {
+      async authorized() {
+        // This is a work-around for handling redirect on auth pages.
+        // We return true here so that the middleware function above
+        // is always called.
+        return true;
+      },
+    },
   }
-}
+);
 
 export const config = {
-  matcher: ["/profile/:path*", "/auth"],
+  matcher: ["/app/:path*", "/auth"],
 };
