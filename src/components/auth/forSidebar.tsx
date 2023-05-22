@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "@/ui/link";
-import SidebarItem from "../mainSidebar/sidebarItem";
 import Avatar from "boring-avatars";
+
+import SidebarItem from "../mainSidebar/sidebarItem";
 import { iconSize } from "../mainSidebar/sidebar";
 
 const AuthForSidebar = () => {

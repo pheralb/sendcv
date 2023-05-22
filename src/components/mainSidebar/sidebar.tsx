@@ -23,7 +23,8 @@ const MainSidebarContent = () => {
       className={cn(
         "fixed overflow-y-auto overflow-x-hidden md:pb-10",
         "md:left-0 md:top-0 md:h-full md:w-14",
-        "bottom-0 h-14 w-full"
+        "bottom-0 h-14 w-full",
+        "border-r border-neutral-800"
       )}
     >
       <div

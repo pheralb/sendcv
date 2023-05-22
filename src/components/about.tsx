@@ -29,7 +29,7 @@ const About = () => {
         sideOffset={12}
         className="w-auto text-[13px]"
       >
-        <div className="mb-4 flex flex-col space-y-2 border-b border-neutral-800 pb-3">
+        <div className="mb-4 flex flex-col space-y-2 border-b border-neutral-700 pb-3">
           <ExternalLink href="https://midu.dev" externalIcon={true}>
             midudev Hackathon 2023
           </ExternalLink>
