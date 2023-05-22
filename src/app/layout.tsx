@@ -17,6 +17,7 @@ const satoshiFont = localFont({
 
 // Providers:
 import { ThemeProvider } from "@/providers/themeProvider";
+import SonnerProvider from "@/providers/sonnerProvider";
 
 // Metadata:
 export const metadata = {
@@ -40,7 +41,9 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Sidebar>{children}</Sidebar>
+          <SonnerProvider>
+            <Sidebar>{children}</Sidebar>
+          </SonnerProvider>
         </ThemeProvider>
       </body>
     </html>
