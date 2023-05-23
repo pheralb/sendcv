@@ -5,8 +5,12 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--satoshiFont-font)", "sans-serif"],
+        heading: ["var(--calSans-font)", "sans-serif"],
+      },
       colors: {
-        "dark": "#222222",
+        dark: "#222222",
       },
       keyframes: {
         "accordion-down": {
