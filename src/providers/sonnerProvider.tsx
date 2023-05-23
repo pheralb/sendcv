@@ -1,3 +1,5 @@
+"use client"
+
 import type { ReactNode } from "react";
 import { Toaster } from "sonner";
 
@@ -9,7 +11,7 @@ const SonnerProvider = (props: SonnerProviderProps) => {
   return (
     <>
       {props.children}
-      <Toaster />
+      <Toaster theme="dark" position="bottom-center" />
     </>
   );
 };
