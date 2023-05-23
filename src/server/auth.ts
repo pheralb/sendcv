@@ -17,10 +17,13 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id;
         session.user.name = token.name;
         session.user.username = token.username;
+        session.user.verified = token.verified;
         session.user.email = token.email;
         session.user.image = token.image;
         session.user.description = token.description;
         session.user.website = token.website;
+        session.user.twitterUrl = token.twitterUrl;
+        session.user.linkedinUrl = token.linkedinUrl;
       }
       return session;
     },
@@ -38,10 +41,13 @@ export const authOptions: NextAuthOptions = {
         id: dbUser.id,
         name: dbUser.name,
         username: dbUser.username,
+        verified: dbUser.verified,
         email: dbUser.email,
         image: dbUser.image,
         description: dbUser.description,
         website: dbUser.website,
+        twitterUrl: dbUser.twitterUrl,
+        linkedinUrl: dbUser.linkedinUrl,
       };
     },
   },
@@ -55,6 +61,7 @@ export const authOptions: NextAuthOptions = {
           id: profile.id.toString(),
           name: profile.name || profile.login,
           username: profile.login,
+          description: profile.bio,
           email: profile.email,
           image: profile.avatar_url,
         };
