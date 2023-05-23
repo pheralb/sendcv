@@ -3,20 +3,25 @@ import type { ReactNode } from "react";
 
 interface AlertProps {
   children: ReactNode;
-  color: "warn" | "error" | "success";
+  color: "warn" | "error" | "success" | "tip";
+  emoji?: string;
 }
 
 const Alert = (props: AlertProps) => {
   return (
     <div
       className={cn(
-        "p-3 rounded-md text-sm font-medium",
+        "rounded-md p-3 text-sm font-medium",
         props.color === "warn" && "bg-yellow-400/10",
         props.color === "error" && "bg-red-400/10",
-        props.color === "success" && "bg-green-400/10"
+        props.color === "success" && "bg-green-400/10",
+        props.color === "tip" && "bg-neutral-400/10"
       )}
     >
-      {props.children}
+      <div className="flex items-center space-x-1">
+        {props.color === "tip" && <span>{props.emoji ?? "✨"}</span>}
+        <span>{props.children}</span>
+      </div>
     </div>
   );
 };
