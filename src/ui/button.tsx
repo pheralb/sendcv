@@ -4,9 +4,7 @@ import Spinner from "./spinner";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  type?: "button" | "submit" | "reset";
   children: ReactNode;
-  onClick?: () => void | Promise<void>;
   icon?: ReactNode;
   loadingstatus?: boolean;
   loadingtext?: string;
@@ -25,14 +23,12 @@ export const ButtonStyles = clsx(
 export const Button = (props: ButtonProps) => {
   return (
     <button
-      type={props.type}
       className={clsx(
         ButtonStyles,
         props.loadingstatus && "cursor-wait opacity-50",
         props.disabled && "cursor-not-allowed opacity-50",
         props.wFull && "w-full"
       )}
-      onClick={props.onClick}
       disabled={props.disabled || props.loadingstatus}
       {...props}
     >
