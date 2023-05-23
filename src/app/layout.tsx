@@ -6,11 +6,19 @@ import { cn } from "@/utils/cn";
 import Sidebar from "@/components/mainSidebar/sidebar";
 
 // Fonts:
+import { Figtree } from "next/font/google";
 import localFont from "next/font/local";
-const satoshiFont = localFont({
+const figtreeFont = Figtree({
   variable: "--satoshiFont-font",
-  src: "../fonts/Satoshi-Variable.woff2",
-  weight: "300 900",
+  subsets: ["latin"],
+  weight: ["400", "800"],
+  display: "swap",
+  preload: true,
+});
+const calSans = localFont({
+  src: "../fonts/CalSans-SemiBold.woff2",
+  variable: "--calSans-font",
+  weight: "600",
   display: "swap",
   preload: true,
 });
@@ -37,7 +45,8 @@ export default function RootLayout({
           "bg-neutral-200 dark:bg-neutral-900",
           "text-slate-900 dark:text-slate-100",
           "min-h-screen antialiased",
-          satoshiFont.className
+          figtreeFont.className,
+          calSans.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
