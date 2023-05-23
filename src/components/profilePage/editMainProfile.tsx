@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 import {
   Dialog,
@@ -22,6 +22,8 @@ import { toast } from "sonner";
 interface EditMainProfileProps {
   name: string;
   website: string;
+  twitterUrl: string;
+  linkedinUrl: string;
 }
 
 const EditMainProfile = (props: EditMainProfileProps) => {
@@ -65,7 +67,7 @@ const EditMainProfile = (props: EditMainProfileProps) => {
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormGroup>
-            <Label htmlFor="name">Nombre</Label>
+            <Label htmlFor="name">Nombre *</Label>
             <Input
               type="text"
               placeholder="Nombre"
@@ -93,8 +95,46 @@ const EditMainProfile = (props: EditMainProfileProps) => {
               <Alert color="warn">{errors.website.message}</Alert>
             )}
           </FormGroup>
+          <FormGroup>
+            <Label htmlFor="twitterUrl">URL de Twitter</Label>
+            <Input
+              type="url"
+              placeholder="URL de Twitter"
+              defaultValue={props.twitterUrl}
+              {...register("twitterUrl", {
+                pattern: {
+                  value: /^(ftp|http|https):\/\/[^ "]+$/,
+                  message: "Introduce una url válida.",
+                },
+              })}
+            />
+            {errors.website && (
+              <Alert color="warn">{errors.twitterUrl?.message}</Alert>
+            )}
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="linkedinUrl">URL de LinkedIn</Label>
+            <Input
+              type="url"
+              placeholder="URL de LinkedIn"
+              defaultValue={props.linkedinUrl}
+              {...register("linkedinUrl", {
+                pattern: {
+                  value: /^(ftp|http|https):\/\/[^ "]+$/,
+                  message: "Introduce una url válida.",
+                },
+              })}
+            />
+            {errors.website && (
+              <Alert color="warn">{errors.linkedinUrl?.message}</Alert>
+            )}
+          </FormGroup>
           <div className="flex items-center justify-end">
-            <Button type="submit" loadingstatus={loading} loadingtext="Guardando...">
+            <Button
+              type="submit"
+              loadingstatus={loading}
+              loadingtext="Guardando..."
+            >
               Guardar
             </Button>
           </div>
