@@ -2,9 +2,9 @@ import { getServerSession } from "next-auth";
 
 import { authOptions } from "@/server/auth";
 import { prisma } from "@/server/db";
-import { profilePostSchema } from "@/server/schemas/profilePostSchema";
+import { aboutPostSchema } from "@/server/schemas/aboutPostSchema";
 
-// [POST] Update profile info for the authenticated user:
+// [POST] Update about me info for the authenticated user:
 // ---------------------------------------
 export async function POST(req: Request) {
   try {
@@ -15,26 +15,22 @@ export async function POST(req: Request) {
     }
 
     const json = await req.json();
-    const body = profilePostSchema.parse(json);
+    const body = aboutPostSchema.parse(json);
     const { user } = session;
-    
-    const newProfileUpdate = await prisma.user.update({
+
+    const newDescriptionUpdate = await prisma.user.update({
       where: {
         username: user.username,
       },
       data: {
-        name: body.name,
-        website: body.website,
-        twitterUrl: body.twitterUrl,
-        linkedinUrl: body.linkedinUrl,
+        description: body.description,
       },
     });
 
-    return new Response(JSON.stringify(newProfileUpdate));
+    return new Response(JSON.stringify(newDescriptionUpdate));
   } catch (error) {
-    return new Response(
-      JSON.stringify({ error: error || "Unknown error" }),
-      { status: 500 }
-    );
+    return new Response(JSON.stringify({ error: error || "Unknown error" }), {
+      status: 500,
+    });
   }
 }
