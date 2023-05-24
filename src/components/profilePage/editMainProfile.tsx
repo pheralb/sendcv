@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -39,7 +40,6 @@ const EditMainProfile = (props: EditMainProfileProps) => {
   const onSubmit: SubmitHandler<EditMainProfileProps> = async (data) => {
     setLoading(true);
     try {
-      ("use server");
       await fetch("/api/profile", {
         method: "POST",
         body: JSON.stringify(data),
@@ -59,7 +59,7 @@ const EditMainProfile = (props: EditMainProfileProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <EditBtn />
+        <EditBtn border={true}/>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

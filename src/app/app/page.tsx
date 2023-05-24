@@ -1,13 +1,15 @@
-import { getCurrentUser } from "@/server/services/getCurrentUser";
 import { notFound } from "next/navigation";
 import Profile from "@/components/profilePage/profile";
 import { Link } from "lucide-react";
+import { getCurrentAuthUser } from "@/server/services/getCurrentAuthUser";
 
 const ProfileApp = async () => {
-  const user = await getCurrentUser();
+  const user = await getCurrentAuthUser();
+
   if (!user) {
     return notFound();
   }
+
   return (
     <>
       <div className="sticky top-0 flex w-full items-center justify-center border-b border-neutral-800 py-4 text-neutral-400">
@@ -16,7 +18,7 @@ const ProfileApp = async () => {
           <span className="font-medium">sendcv.vercel.app/{user.username}</span>
         </div>
       </div>
-      <Profile user={user} edit={true} />
+      <Profile edit={true} user={user} experience={user.experiences} />
     </>
   );
 };

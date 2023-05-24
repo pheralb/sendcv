@@ -13,5 +13,5 @@ export default async function Page(props: PageProps) {
   if (!user) {
     return notFound();
   }
-  return <Profile user={user as any} edit={false} />;
+  return <Profile user={user} experience={user.experiences} edit={false} />;
 }

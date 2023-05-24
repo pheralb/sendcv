@@ -1,10 +1,25 @@
-import { Edit } from "lucide-react";
 import React from "react";
+import { Edit } from "lucide-react";
+import { cn } from "@/utils/cn";
 
-const EditBtn = () => {
+interface EditBtnProps {
+  color?: string;
+  border?: boolean;
+}
+
+const EditBtn = (props: EditBtnProps) => {
   return (
-    <div className="p-2 border border-neutral-700 rounded-full hover:bg-neutral-700">
-      <Edit width={14} height={14} className="text-yellow-200" />
+    <div
+      className={cn(
+        "rounded-full p-2 hover:bg-neutral-700",
+        props.border && "border border-neutral-700"
+      )}
+    >
+      <Edit
+        width={14}
+        height={14}
+        className={props.color || "text-yellow-200"}
+      />
     </div>
   );
 };
