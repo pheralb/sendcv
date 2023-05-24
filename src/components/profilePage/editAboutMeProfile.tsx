@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -27,7 +28,6 @@ const EditAboutMeProfile = (props: EditAboutMeProfileProps) => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm<EditAboutMeProfileProps>();
   const [open, setOpen] = useState(false);
@@ -42,7 +42,6 @@ const EditAboutMeProfile = (props: EditAboutMeProfileProps) => {
   const onSubmit: SubmitHandler<EditAboutMeProfileProps> = async (data) => {
     setLoading(true);
     try {
-      ("use server");
       await fetch("/api/profile/aboutme", {
         method: "POST",
         body: JSON.stringify(data),
@@ -62,7 +61,7 @@ const EditAboutMeProfile = (props: EditAboutMeProfileProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <EditBtn />
+        <EditBtn border={true}/>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

@@ -1,17 +1,9 @@
-import type { iUser } from "@/types/user";
-import {
-  GithubIcon,
-  LinkIcon,
-  LinkedinIcon,
-  TwitterIcon,
-  Verified,
-} from "lucide-react";
-import EditMainProfile from "./editMainProfile";
+import type { User, UserExperience } from "@prisma/client";
+import { GithubIcon, LinkedinIcon, TwitterIcon, Verified } from "lucide-react";
+import { cn } from "@/utils/cn";
 
 import { ExternalLink } from "@/ui/link";
 import Alert from "@/ui/alert";
-import { cn } from "@/utils/cn";
-import EditAboutMeProfile from "./editAboutMeProfile";
 import {
   Tooltip,
   TooltipContent,
@@ -19,16 +11,22 @@ import {
   TooltipTrigger,
 } from "@/ui/tooltip";
 
+import EditMainProfile from "./editMainProfile";
+import EditAboutMeProfile from "./editAboutMeProfile";
+import CreateUpdateExperience from "./createUpdateExperience";
+import { TimelineItem, TimelineProvider } from "../timeline";
+
 interface ProfileProps {
   edit: boolean;
-  user: iUser;
+  user: User;
+  experience: UserExperience[];
 }
 
 const iconClassName = cn(
   "text-neutral-400 hover:text-white duration-75 transition-colors"
 );
 
-const Profile = ({ user, edit }: ProfileProps) => {
+const Profile = ({ user, edit, experience }: ProfileProps) => {
   const githubUrl = `https://github.com/${user.username}`;
   return (
     <div className="mx-auto max-w-2xl">
@@ -37,8 +35,8 @@ const Profile = ({ user, edit }: ProfileProps) => {
           <div className="flex items-center space-x-5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={user.image}
-              alt={user.name}
+              src={user.image!}
+              alt={user.name!}
               className="h-20 w-20 rounded-full"
             />
             <div className="flex flex-col">
@@ -46,7 +44,7 @@ const Profile = ({ user, edit }: ProfileProps) => {
                 <h2 className="text-2xl font-medium">{user.name}</h2>
                 {user.verified && (
                   <TooltipProvider delayDuration={0.2}>
-                    <Tooltip >
+                    <Tooltip>
                       <TooltipTrigger className="cursor-default">
                         <Verified
                           className="text-neutral-300"
@@ -95,10 +93,10 @@ const Profile = ({ user, edit }: ProfileProps) => {
             )}
             {edit && (
               <EditMainProfile
-                name={user.name}
-                website={user.website}
-                linkedinUrl={user.linkedinUrl}
-                twitterUrl={user.twitterUrl}
+                name={user.name!}
+                website={user.website!}
+                linkedinUrl={user.linkedinUrl!}
+                twitterUrl={user.twitterUrl!}
               />
             )}
           </div>
@@ -106,7 +104,7 @@ const Profile = ({ user, edit }: ProfileProps) => {
         <div className="border-t-2 border-neutral-800 pt-5">
           <div className="mb-2 flex items-center justify-between">
             <h3 className="text-xl font-medium">Sobre mi</h3>
-            {edit && <EditAboutMeProfile description={user.description} />}
+            {edit && <EditAboutMeProfile description={user.description!} />}
           </div>
           <p className="text-neutral-400">
             {edit ? (
@@ -126,25 +124,38 @@ const Profile = ({ user, edit }: ProfileProps) => {
           </p>
         </div>
         <div className="border-t-2 border-neutral-800 pt-5">
-          <div className="flex items-center justify-between">
-            <h3 className="mb-2 text-xl font-medium">Experiencia</h3>
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-xl font-medium">Proyectos</h3>
+            <CreateUpdateExperience status="create" {...experience} />
           </div>
-          <p className="text-neutral-400">
-            {edit ? (
-              user.description ? (
-                user.description
-              ) : (
-                <Alert color="tip">
-                  No tienes una descripción, puedes agregar una haciendo click
-                  en el icono del lapiz.
-                </Alert>
-              )
-            ) : user.description ? (
-              user.description
+        </div>
+        <div className="border-t-2 border-neutral-800 pt-5">
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-xl font-medium">Experiencia</h3>
+            {edit && <CreateUpdateExperience status="create" {...experience} />}
+          </div>
+          <div className="text-neutral-400">
+            {experience ? (
+              <TimelineProvider>
+                {experience.map((exp) => (
+                  <TimelineItem
+                    key={exp.id}
+                    title={exp.title}
+                    company={exp.company}
+                    description={exp.description}
+                    date={exp.startDate}
+                    url={exp.url ?? ""}
+                    edit={edit}
+                  />
+                ))}
+              </TimelineProvider>
             ) : (
-              <Alert color="tip">Este usuario no tiene una descripción.</Alert>
+              <Alert color="tip">
+                No tienes una descripción, puedes agregar una haciendo click en
+                el icono del lapiz.
+              </Alert>
             )}
-          </p>
+          </div>
         </div>
       </div>
     </div>
