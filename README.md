@@ -2,6 +2,12 @@
 
 [**Sendcv**](https://sendcv.vercel.app) is a web app to explore jobs and create a beautiful profiles with your projects, social networks and experience. Inspired by [read.cv](https://read.cv/) ✨.
 
+## 🤔 Features
+
+- Explore & save offers using Infojobs API.
+- Create a beautiful profile with your description, experience, projects & social networks.
+- Light/dark theme.
+
 ## ⚙️ Stack
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app):
@@ -24,14 +30,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 To get a local copy up and running, please follow these simple steps:
 
-※ **Recommended extensions** for Visual Studio Code:
+**Recommended extensions** for Visual Studio Code:
 
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss).
 - [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma).
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
-※ **Setup development server**:
+**Setup development server**:
 
 1. Clone or [fork](https://github.com/pheralb/sendcv/fork) the repository:
 
@@ -59,7 +65,7 @@ pnpm postinstall
 yarn install 
 ```
 
-※ **Setup environment variables**:
+**Setup environment variables**:
 
 Create a ``.env`` file in the root folder of the project with the following variables:
 
@@ -86,7 +92,7 @@ INFOJOBS_TOKEN=""
 - [`INFOJOBS_CLIENT_ID` & `INFOJOBS_CLIENT_SECRET`](https://developer.infojobs.net/app/manage-app/create.xhtml) - Create an app on Infojobs.
 - [`INFOJOBS_TOKEN`](https://developer.infojobs.net/documentation/app-auth/index.xhtml) - In the *client credentials* section, enter the INFOJOBS_CLIENT_ID and the INFOJOBS_CLIENT_SECRET.
 
-※ **Open development server**:
+**Open development server**:
 
 1. Run to open the Next.js development server:
 
@@ -113,3 +119,4 @@ pnpm studio
 # with yarn:
 yarn studio 
 ```
+
