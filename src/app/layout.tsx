@@ -37,6 +37,10 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
+  params: {
+    tag: string;
+    item: string;
+  };
 }) {
   return (
     <html lang="en">

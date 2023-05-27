@@ -29,7 +29,7 @@ const iconClassName = cn(
 const Profile = ({ user, edit, experience }: ProfileProps) => {
   const githubUrl = `https://github.com/${user.username}`;
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-2xl mb-12">
       <div className="flex flex-col space-y-5 pt-12">
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center space-x-5">
@@ -126,7 +126,7 @@ const Profile = ({ user, edit, experience }: ProfileProps) => {
         <div className="border-t-2 border-neutral-800 pt-5">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-xl font-medium">Proyectos</h3>
-            <CreateUpdateExperience status="create" {...experience} />
+            {edit && <CreateUpdateExperience status="create" {...experience} />}
           </div>
         </div>
         <div className="border-t-2 border-neutral-800 pt-5">
@@ -137,17 +137,25 @@ const Profile = ({ user, edit, experience }: ProfileProps) => {
           <div className="text-neutral-400">
             {experience ? (
               <TimelineProvider>
-                {experience.map((exp) => (
-                  <TimelineItem
-                    key={exp.id}
-                    title={exp.title}
-                    company={exp.company}
-                    description={exp.description}
-                    date={exp.startDate}
-                    url={exp.url ?? ""}
-                    edit={edit}
-                  />
-                ))}
+                {experience
+                  .sort((a, b) => {
+                    if (a.startDate! > b.startDate!) return -1;
+                    if (a.startDate! < b.startDate!) return 1;
+                    return 0;
+                  })
+                  .map((exp) => (
+                    <TimelineItem
+                      key={exp.id}
+                      id={exp.id}
+                      title={exp.title}
+                      company={exp.company}
+                      description={exp.description}
+                      startDate={exp.startDate}
+                      endDate={exp.endDate}
+                      url={exp.url ?? ""}
+                      edit={edit}
+                    />
+                  ))}
               </TimelineProvider>
             ) : (
               <Alert color="tip">
