@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 import { Link } from "@/ui/link";
 import { cn } from "@/utils/cn";
 
-import SidebarItem from "./sidebarItem";
-
-import { Search } from "lucide-react";
+import Search from "@/ui/icons/search";
 import House from "@/ui/icons/house";
+
+import SidebarItem from "./sidebarItem";
 import ChangeTheme from "../changeTheme";
 import AuthForSidebar from "../auth/forSidebar";
 import About from "../about";
@@ -38,7 +38,7 @@ const MainSidebarContent = () => {
         </Link>
         <a>
           <SidebarItem
-            icon={<Search strokeWidth={iconStroke} size={iconSize} />}
+            icon={<Search width={iconSize} />}
             label="Buscar"
           />
         </a>
