@@ -23,13 +23,14 @@ import { toast } from "sonner";
 
 interface CreateUpdateExperienceProps {
   status: "edit" | "create";
+  id?: string;
   title?: String;
   description?: String;
   company?: String;
   url?: String;
   location?: String;
-  startDate?: String;
-  endDate?: String;
+  startDate?: Date | String | null;
+  endDate?: Date | String | null;
 }
 
 const CreateUpdateExperience = (props: CreateUpdateExperienceProps) => {
@@ -42,13 +43,22 @@ const CreateUpdateExperience = (props: CreateUpdateExperienceProps) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  // Create or update experience:
   const onSubmit: SubmitHandler<CreateUpdateExperienceProps> = async (data) => {
     setLoading(true);
     try {
-      await fetch("/api/profile/experience", {
-        method: props.status === "edit" ? "PUT" : "POST",
-        body: JSON.stringify(data),
-      });
+      await fetch(
+        props.status === "edit"
+          ? `/api/profile/experience/${props.id}`
+          : "/api/profile/experience",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: props.status === "edit" ? "PATCH" : "POST",
+          body: JSON.stringify(data),
+        }
+      );
       toast.success("Perfil actualizado correctamente.");
       setOpen(false);
       router.refresh();
@@ -161,7 +171,11 @@ const CreateUpdateExperience = (props: CreateUpdateExperienceProps) => {
               <Alert color="warn">{errors.startDate.message}</Alert>
             </div>
           )}
-          <div className="flex items-center justify-end">
+          <Alert color="tip">
+            Si actualmente trabajas en esta empresa, deja el campo de final
+            vacío.
+          </Alert>
+          <div className="mt-2 flex items-center justify-end">
             <Button
               type="submit"
               loadingstatus={loading}
