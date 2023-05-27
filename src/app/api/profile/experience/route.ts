@@ -38,39 +38,3 @@ export async function POST(req: Request) {
     });
   }
 }
-
-// [PUT] Update experience data for the authenticated user:
-// ---------------------------------------
-export async function PUT(req: Request) {
-  try {
-    const session = await getServerSession(authOptions);
-
-    if (!session) {
-      return new Response("Unauthorized", { status: 403 });
-    }
-
-    const json = await req.json();
-    const body = experiencePostSchema.parse(json);
-
-    const newDescriptionUpdate = await prisma.userExperience.update({
-      where: {
-        id: body.id,
-      },
-      data: {
-        title: body.title,
-        company: body.company,
-        url: body.url || "",
-        location: body.location || "",
-        startDate: body.startDate ? new Date(body.startDate) : null,
-        endDate: body.endDate ? new Date(body.endDate) : null,
-        description: body.description,
-      },
-    });
-
-    return new Response(JSON.stringify(newDescriptionUpdate));
-  } catch (error) {
-    return new Response(JSON.stringify({ error: error || "Unknown error" }), {
-      status: 500,
-    });
-  }
-}
