@@ -15,7 +15,7 @@ const Page = () => {
     setLoading(true);
     try {
       await signIn(provider, {
-        callbackUrl: `/app`,
+        callbackUrl: `/dashboard`,
       });
     } catch (error) {
       toast.error("Unable to log in. Please try again later.");

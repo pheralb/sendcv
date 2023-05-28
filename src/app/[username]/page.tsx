@@ -33,7 +33,7 @@ export async function generateMetadata({
       title: `${user.name!} | Sendcv`,
       description: user.description!,
       type: "article",
-      url: absoluteUrl(`/app/${user.username}`),
+      url: absoluteUrl(`/dashboard/${user.username}`),
       images: [
         {
           url: ogUrl.toString(),

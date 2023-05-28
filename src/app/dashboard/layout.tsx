@@ -18,12 +18,12 @@ const Layout = async ({ children }: { children: ReactNode }) => {
     <div className="min-h-screen">
       <LayoutContent>
         <div className="flex flex-col space-y-2">
-          <Link href="/app">
+          <Link href="/dashboard">
             <SidebarItem icon={<UserCircle width={18} />}>
               Tu perfil
             </SidebarItem>
           </Link>
-          <Link href="/app/offers">
+          <Link href="/dashboard/offers">
             <SidebarItem icon={<Star width={18} />}>Ofertas</SidebarItem>
           </Link>
           <Logout />
