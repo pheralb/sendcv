@@ -10,6 +10,8 @@ const ProfileApp = async () => {
     return notFound();
   }
 
+  console.log(user);
+
   return (
     <>
       <div className="sticky top-0 flex w-full items-center justify-center border-b border-neutral-800 py-4 text-neutral-400">
@@ -18,7 +20,12 @@ const ProfileApp = async () => {
           <span className="font-medium">sendcv.vercel.app/{user.username}</span>
         </div>
       </div>
-      <Profile edit={true} user={user} experience={user.experiences} />
+      <Profile
+        edit={true}
+        user={user}
+        experience={user.experiences}
+        projects={user.Projects}
+      />
     </>
   );
 };
