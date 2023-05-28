@@ -12,7 +12,7 @@ export const env = createEnv({
         : z.string().min(1).optional(),
     NEXTAUTH_URL: z.preprocess(
       (str) => process.env.VERCEL_URL ?? str,
-      process.env.VERCEL ? z.string().min(1) : z.string().url(),
+      process.env.VERCEL ? z.string().min(1) : z.string().url()
     ),
     GITHUB_CLIENT_ID: z.string(),
     GITHUB_CLIENT_SECRET: z.string(),
@@ -22,7 +22,9 @@ export const env = createEnv({
   },
 
   // Client environment variables:
-  client: {},
+  client: {
+    NEXT_PUBLIC_APP_URL: z.string().url(),
+  },
 
   // Runtime environment variables:
   runtimeEnv: {
@@ -35,5 +37,6 @@ export const env = createEnv({
     INFOJOBS_CLIENT_ID: process.env.INFOJOBS_CLIENT_ID,
     INFOJOBS_CLIENT_SECRET: process.env.INFOJOBS_CLIENT_SECRET,
     INFOJOBS_TOKEN: process.env.INFOJOBS_TOKEN,
+    NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
   },
 });
