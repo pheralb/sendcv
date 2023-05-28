@@ -1,4 +1,4 @@
-import type { User, UserExperience } from "@prisma/client";
+import type { User, UserExperience, Projects } from "@prisma/client";
 import { GithubIcon, LinkedinIcon, TwitterIcon, Verified } from "lucide-react";
 import { cn } from "@/utils/cn";
 
@@ -10,28 +10,37 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/ui/tooltip";
+import { TimelineItem, TimelineProvider } from "../timeline";
 
 import EditMainProfile from "./editMainProfile";
 import EditAboutMeProfile from "./editAboutMeProfile";
 import CreateUpdateExperience from "./createUpdateExperience";
-import { TimelineItem, TimelineProvider } from "../timeline";
+import CreateUpdateProject from "./createUpdateProject";
 
 interface ProfileProps {
   edit: boolean;
   user: User;
   experience: UserExperience[];
+  projects: Projects[];
 }
 
 const iconClassName = cn(
   "text-neutral-400 hover:text-white duration-75 transition-colors"
 );
 
-const Profile = ({ user, edit, experience }: ProfileProps) => {
+const animateInClassName = cn("animate-in slide-in-from-bottom-50");
+
+const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
   const githubUrl = `https://github.com/${user.username}`;
   return (
-    <div className="mx-auto max-w-2xl mb-12">
+    <div className="mx-auto mb-12 max-w-2xl animate-in fade-in-100">
       <div className="flex flex-col space-y-5 pt-12">
-        <div className="flex w-full items-center justify-between">
+        <div
+          className={cn(
+            "flex w-full items-center justify-between",
+            animateInClassName
+          )}
+        >
           <div className="flex items-center space-x-5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -126,8 +135,49 @@ const Profile = ({ user, edit, experience }: ProfileProps) => {
         <div className="border-t-2 border-neutral-800 pt-5">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-xl font-medium">Proyectos</h3>
-            {edit && <CreateUpdateExperience status="create" {...experience} />}
+            {edit && <CreateUpdateProject status="create" {...experience} />}
           </div>
+          {projects ? (
+            <div className="mb-2 grid grid-cols-1 gap-2">
+              {projects.map((project) => (
+                <div
+                  key={project.id}
+                  className="flex flex-col space-y-1 rounded-md border border-neutral-800 p-4"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <ExternalLink href={project.url!} externalIcon={true}>
+                      <span className="font-medium text-neutral-300 text-md">
+                        {project.title}
+                      </span>
+                    </ExternalLink>
+                    <div className="flex items-center space-x-2">
+                      <ExternalLink href={project.repository!}>
+                        <GithubIcon width={18} className={iconClassName} />
+                      </ExternalLink>
+                      {edit && (
+                        <CreateUpdateProject
+                          status="edit"
+                          id={project.id}
+                          title={project.title}
+                          description={project.description}
+                          url={project.url}
+                          repository={project.repository}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <p className="truncate text-neutral-400">
+                    {project.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <Alert color="tip">
+              No tienes una descripción, puedes agregar una haciendo click en el
+              icono del lapiz.
+            </Alert>
+          )}
         </div>
         <div className="border-t-2 border-neutral-800 pt-5">
           <div className="mb-4 flex items-center justify-between">
