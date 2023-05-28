@@ -8,6 +8,7 @@ export async function getSingleUser(username: string) {
     },
     include: {
       experiences: true,
+      Projects: true,
     },
   });
 

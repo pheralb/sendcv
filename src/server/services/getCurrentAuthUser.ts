@@ -12,6 +12,7 @@ export async function getCurrentAuthUser() {
     },
     include: {
       experiences: true,
+      Projects: true,
     },
   });
 
