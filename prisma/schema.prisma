@@ -68,6 +68,7 @@ model User {
     accounts    Account[]
     sessions    Session[]
     offers      Offers[]
+    Projects    Projects[]
 }
 
 model VerificationToken {
@@ -95,6 +96,21 @@ model Offers {
 
     @@index([userId])
     @@map("offers")
+}
+
+model Projects {
+    id          String   @id @default(cuid())
+    title       String
+    description String
+    url         String
+    repository  String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    User        User?    @relation(fields: [userId], references: [id])
+    userId      String?
+
+    @@index([userId])
+    @@map("projects")
 }
 
 model UserExperience {
