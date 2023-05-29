@@ -6,7 +6,7 @@ import DeleteExperience from "../profilePage/deleteExperience";
 
 const TimelineProvider = ({ children }: { children: ReactNode }) => {
   return (
-    <ol className="relative ml-1 space-y-5 border-l border-neutral-300 dark:border-neutral-700">
+    <ol className="relative ml-1 space-y-5 border-l border-neutral-400 dark:border-neutral-700">
       {children}
     </ol>
   );

@@ -21,7 +21,7 @@ const MainSidebarContent = () => {
   return (
     <nav
       className={cn(
-        "fixed overflow-y-auto overflow-x-hidden md:pb-10",
+        "fixed overflow-y-auto overflow-x-hidden md:pb-10 z-50",
         "md:left-0 md:top-0 md:h-full md:w-14",
         "bottom-0 h-14 w-full",
         "border-r border-neutral-300 dark:border-neutral-800"
@@ -37,10 +37,7 @@ const MainSidebarContent = () => {
           <SidebarItem icon={<House width={22} />} label="Inicio" />
         </Link>
         <a>
-          <SidebarItem
-            icon={<Search width={iconSize} />}
-            label="Buscar"
-          />
+          <SidebarItem icon={<Search width={iconSize} />} label="Buscar" />
         </a>
         <ChangeTheme />
         <About />

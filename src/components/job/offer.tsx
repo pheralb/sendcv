@@ -22,7 +22,7 @@ const JobCard = (props: Offer) => {
       </th>
       <td className="py-4">
         <div className="flex flex-col">
-          <Link href={`/offer/${props.id}`}>
+          <Link href={`/offer/${props.id}`} underline>
             <h3 className="mb-1 font-medium">{props.title}</h3>
           </Link>
           <p className="text-md text-neutral-500 dark:text-neutral-400">{props.province}</p>
