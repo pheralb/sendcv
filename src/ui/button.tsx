@@ -13,9 +13,9 @@ export interface ButtonProps
 }
 
 export const ButtonStyles = clsx(
-  "rounded-md border border-neutral-700 bg-neutral-700/50 px-4 py-2 font-medium text-white",
+  "rounded-md border border-neutral-500 dark:border-neutral-700 bg-neutral-400/40 dark:bg-neutral-700/50 px-4 py-2 font-medium text-neutral-900 dark:text-white",
   "transition-all duration-200 ease-in-out",
-  "hover:bg-neutral-800/60 hover:shadow-md",
+  "bg-neutral-400/60 dark:hover:bg-neutral-800/60 hover:shadow-md",
   "outline-none focus:outline-none",
   "focus:ring-2 focus:ring-neutral-700 focus:ring-opacity-50"
 );
