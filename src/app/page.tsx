@@ -1,7 +1,8 @@
 import Container from "@/components/container";
-import JobCard from "@/components/job/card";
+import JobOffer from "@/components/job/offer";
 
 import { getOffers } from "@/server/services/getOffers";
+import { getDays } from "@/utils/getDays";
 
 export default async function Home() {
   const listOfOffers = await getOffers();
@@ -20,10 +21,34 @@ export default async function Home() {
         </div>
       </section>
       <Container>
-        <div className="flex flex-col space-y-2">
-          {listOfOffers.map((offer) => (
-            <JobCard key={offer.id} link={offer.infojobsUrl} {...offer} />
-          ))}
+        <div className="relative overflow-x-auto">
+          <table className="w-full text-left">
+            <thead className="text-neutral-400">
+              <tr>
+                <th scope="col" className="py-3 font-normal">
+                  Equipo
+                </th>
+                <th scope="col" className="py-3 font-normal">
+                  Oferta
+                </th>
+                <th scope="col" className="py-3 font-normal">
+                  Experiencia
+                </th>
+                <th scope="col" className="py-3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {listOfOffers
+                .sort(
+                  (a, b) =>
+                    getDays(a.published.toString()) -
+                    getDays(b.published.toString())
+                )
+                .map((offer) => (
+                  <JobOffer key={offer.id} link={offer.infojobsUrl} {...offer} />
+                ))}
+            </tbody>
+          </table>
         </div>
       </Container>
     </>
