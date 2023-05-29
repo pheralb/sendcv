@@ -20,13 +20,9 @@ interface ParamsProps {
 
 export default async function Page(props: ParamsProps) {
   const offer = await getOfferById(props.params.offerId);
-
-  if (!offer) {
+  if (!offer || offer === null) {
     return notFound();
   }
-
-  console.log(offer);
-
   return (
     <>
       <div className="sticky top-0 mt-1 flex w-full items-center justify-between border-b border-neutral-800 bg-neutral-900/90 px-6 py-3 text-sm">
