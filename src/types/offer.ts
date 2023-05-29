@@ -5,6 +5,8 @@ export interface Offer {
   experienceMin: string;
   link: string;
   teleworking: string;
+  infojobsUrl: string;
+  published: Date;
   author: Author
 }
 
