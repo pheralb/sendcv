@@ -25,7 +25,7 @@ interface ProfileProps {
 }
 
 const iconClassName = cn(
-  "text-neutral-400 hover:text-white duration-75 transition-colors"
+  "dark:text-neutral-400 dark:hover:text-white hover:text-neutral-700 duration-75 transition-colors"
 );
 
 const animateInClassName = cn("animate-in slide-in-from-bottom-50");
@@ -56,7 +56,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
                     <Tooltip>
                       <TooltipTrigger className="cursor-default">
                         <Verified
-                          className="text-neutral-300"
+                          className="text-blue-500"
                           width={16}
                           height={16}
                         />
@@ -73,7 +73,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
                   </TooltipProvider>
                 )}
               </div>
-              <div className="flex items-center space-x-2 text-neutral-400">
+              <div className="flex items-center space-x-2 text-neutral-600 dark:text-neutral-400">
                 <p>{user.username}</p>
                 {user.website && (
                   <>
@@ -110,12 +110,12 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
             )}
           </div>
         </div>
-        <div className="border-t-2 border-neutral-800 pt-5">
+        <div className="border-t-2 border-neutral-300 pt-5 dark:border-neutral-800">
           <div className="mb-2 flex items-center justify-between">
             <h3 className="text-xl font-medium">Sobre mi</h3>
             {edit && <EditAboutMeProfile description={user.description!} />}
           </div>
-          <p className="text-neutral-400">
+          <p className="dark:text-neutral-400">
             {edit ? (
               user.description ? (
                 user.description
@@ -132,7 +132,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
             )}
           </p>
         </div>
-        <div className="border-t-2 border-neutral-800 pt-5">
+        <div className="border-t-2 border-neutral-300 pt-5 dark:border-neutral-800">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-xl font-medium">Proyectos</h3>
             {edit && <CreateUpdateProject status="create" {...experience} />}
@@ -142,11 +142,11 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
               {projects.map((project) => (
                 <div
                   key={project.id}
-                  className="flex flex-col space-y-1 rounded-md border border-neutral-800 p-4"
+                  className="flex flex-col space-y-1 rounded-md border border-neutral-300 dark:border-neutral-800 p-4"
                 >
                   <div className="flex w-full items-center justify-between">
                     <ExternalLink href={project.url!} externalIcon={true}>
-                      <span className="font-medium text-neutral-300 text-md">
+                      <span className="text-md font-medium dark:text-neutral-300">
                         {project.title}
                       </span>
                     </ExternalLink>
@@ -166,7 +166,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
                       )}
                     </div>
                   </div>
-                  <p className="truncate text-neutral-400">
+                  <p className="truncate text-neutral-500 dark:text-neutral-400">
                     {project.description}
                   </p>
                 </div>
@@ -179,7 +179,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
             </Alert>
           )}
         </div>
-        <div className="border-t-2 border-neutral-800 pt-5">
+        <div className="border-t-2 border-neutral-300 pt-5 dark:border-neutral-800">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-xl font-medium">Experiencia</h3>
             {edit && <CreateUpdateExperience status="create" {...experience} />}

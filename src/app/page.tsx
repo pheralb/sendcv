@@ -23,7 +23,7 @@ export default async function Home() {
       <Container>
         <div className="relative overflow-x-auto">
           <table className="w-full text-left">
-            <thead className="text-neutral-400">
+            <thead className="text-neutral-500 dark:text-neutral-400">
               <tr>
                 <th scope="col" className="py-3 font-normal">
                   Equipo

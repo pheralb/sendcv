@@ -9,7 +9,10 @@ import { ExternalLink, Link } from "@/ui/link";
 const JobCard = (props: Offer) => {
   return (
     <tr className="border-b border-neutral-300 dark:border-neutral-800">
-      <th scope="row" className="py-4 font-normal text-neutral-400">
+      <th
+        scope="row"
+        className="py-4 font-normal text-neutral-800 dark:text-neutral-400"
+      >
         <ExternalLink href={props.author.uri} externalIcon={true}>
           <div className="flex items-center space-x-3">
             <Avatar size={23} name={props.author.name} variant="marble" />
@@ -22,7 +25,7 @@ const JobCard = (props: Offer) => {
           <Link href={`/offer/${props.id}`}>
             <h3 className="mb-1 font-medium">{props.title}</h3>
           </Link>
-          <p className="text-md text-neutral-400">{props.province}</p>
+          <p className="text-md text-neutral-500 dark:text-neutral-400">{props.province}</p>
         </div>
       </td>
       <td className="py-4">

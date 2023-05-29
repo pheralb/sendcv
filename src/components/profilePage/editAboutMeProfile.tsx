@@ -61,7 +61,7 @@ const EditAboutMeProfile = (props: EditAboutMeProfileProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <EditBtn border={true}/>
+        <EditBtn border={true} color="text-dark dark:text-yellow-200"/>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

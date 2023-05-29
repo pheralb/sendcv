@@ -6,7 +6,7 @@ import DeleteExperience from "../profilePage/deleteExperience";
 
 const TimelineProvider = ({ children }: { children: ReactNode }) => {
   return (
-    <ol className="relative ml-1 space-y-5 border-l border-gray-200 dark:border-neutral-700">
+    <ol className="relative ml-1 space-y-5 border-l border-neutral-300 dark:border-neutral-700">
       {children}
     </ol>
   );
@@ -26,8 +26,7 @@ interface TimelineItemProps {
 const TimelineItem = (props: TimelineItemProps) => {
   return (
     <li className="ml-5 pt-1">
-      <div className="absolute -left-1.5 mt-8 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-neutral-900 dark:bg-neutral-700"></div>
-      <time className="mb-2 mt-3 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"></time>
+      <div className="absolute -left-1.5 mt-8 h-3 w-3 rounded-full border border-dark bg-neutral-700 dark:border-neutral-900 dark:bg-neutral-700"></div>
       <div className="flex items-center justify-between">
         <div className="flex flex-col space-y-2">
           <div className="flex items-center space-x-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">

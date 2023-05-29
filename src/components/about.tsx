@@ -16,9 +16,17 @@ const About = () => {
         <SidebarItem
           icon={
             open ? (
-              <X size={iconSize} className="animate-in slide-in-from-left-1" aria-label="Close Popover" />
+              <X
+                size={iconSize}
+                className="animate-in slide-in-from-left-1"
+                aria-label="Close Popover"
+              />
             ) : (
-              <Heart strokeWidth={iconStroke} size={iconSize} aria-label="Acerca de" />
+              <Heart
+                strokeWidth={iconStroke}
+                size={iconSize}
+                aria-label="Acerca de"
+              />
             )
           }
           label="Acerca de"
@@ -29,7 +37,7 @@ const About = () => {
         sideOffset={12}
         className="w-auto text-[13px]"
       >
-        <div className="mb-4 flex flex-col space-y-2 border-b border-neutral-700 pb-3">
+        <div className="mb-4 flex flex-col space-y-2 border-b border-neutral-400 pb-3 dark:border-neutral-700">
           <ExternalLink href="https://midu.dev" externalIcon={true}>
             midudev Hackathon 2023
           </ExternalLink>
@@ -38,7 +46,7 @@ const About = () => {
           </ExternalLink>
         </div>
         <div className="flex items-center space-x-2">
-          <Heart size={13} className="text-red-200" />
+          <Heart size={13} className="text-red-600 dark:text-red-200" />
           <ExternalLink href="https://twitter.com/pheralb_" externalIcon={true}>
             Built by pheralb
           </ExternalLink>

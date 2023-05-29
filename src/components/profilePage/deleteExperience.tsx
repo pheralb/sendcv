@@ -50,8 +50,12 @@ const DeleteExperience = (props: DeleteExperienceProps) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className={cn("rounded-full p-2 hover:bg-neutral-700")}>
-        <Trash width={14} height={14} className="text-red-200" />
+      <DialogTrigger
+        className={cn(
+          "rounded-full p-2 transition-colors duration-75 hover:bg-neutral-300 dark:hover:bg-neutral-700"
+        )}
+      >
+        <Trash width={14} height={14} className="text-dark dark:text-red-200" />
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

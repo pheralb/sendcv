@@ -25,14 +25,14 @@ export default async function Page(props: ParamsProps) {
   }
   return (
     <>
-      <div className="sticky top-0 mt-1 flex w-full items-center justify-between border-b border-neutral-800 bg-neutral-900/90 px-6 py-3 text-sm">
+      <div className="sticky top-0 mt-1 flex w-full items-center justify-between border-b border-neutral-300 bg-neutral-200 px-6 py-3 text-sm dark:border-neutral-800 dark:bg-neutral-900/90">
         <Link href="/">
-          <div className="flex items-center space-x-2 text-neutral-400 duration-75 hover:text-white">
+          <div className="flex items-center space-x-2 text-neutral-700 duration-75 hover:text-dark dark:text-neutral-400 dark:hover:text-white">
             <ChevronLeft width={16} />
             <span>Volver</span>
           </div>
         </Link>
-        <div className="text-neutral-400">
+        <div className="dark:text-neutral-400">
           <ExternalLink href={offer.link} externalIcon={true}>
             <TooltipProvider delayDuration={0.2}>
               <Tooltip>
@@ -72,13 +72,13 @@ export default async function Page(props: ParamsProps) {
                 <div className="flex items-center">
                   <h2 className="mb-1 text-2xl font-medium">{offer.title}</h2>
                 </div>
-                <div className="flex items-center space-x-2 text-neutral-400">
+                <div className="flex items-center space-x-2 text-neutral-500 dark:text-neutral-400">
                   <p>{offer.profile.name}</p>
                   <TooltipProvider delayDuration={0.2}>
                     <Tooltip>
                       <TooltipTrigger className="cursor-default">
                         <Verified
-                          className="text-neutral-300"
+                          className="text-blue-500"
                           width={16}
                           height={16}
                         />
@@ -114,40 +114,40 @@ export default async function Page(props: ParamsProps) {
                 <span
                   key={data.skill}
                   title={data.skill}
-                  className="inline-block cursor-default truncate rounded-full bg-neutral-800 px-2 py-1 text-xs font-medium text-white"
+                  className="inline-block cursor-default truncate rounded-full bg-neutral-300 px-2 py-1 text-xs font-medium text-dark dark:bg-neutral-800 dark:text-white"
                 >
                   {formatText(data.skill)}
                 </span>
               ))}
             </div>
           )}
-          <div className="border-t-2 border-neutral-800 pt-5">
+          <div className="border-t-2 border-neutral-300 pt-5 dark:border-neutral-800">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-xl font-medium">Descripción</h3>
             </div>
-            <article className="prose prose-invert max-w-none">
+            <article className="prose max-w-none dark:prose-invert">
               {offer.description}
             </article>
           </div>
           <div className="pt-2">
             <div className="flex flex-col space-y-4">
-              <div className="flex items-center justify-between border-b-2 border-neutral-800 pb-1">
+              <div className="flex items-center justify-between border-b-2 border-neutral-300 pb-1 dark:border-neutral-800">
                 <p>Localización</p>
                 <p>{offer.city}</p>
               </div>
-              <div className="flex items-center justify-between border-b-2 border-neutral-800 pb-1">
+              <div className="flex items-center justify-between border-b-2 border-neutral-300 pb-1 dark:border-neutral-800">
                 <p>Vacantes</p>
                 <p>{offer.vacancies}</p>
               </div>
-              <div className="flex items-center justify-between border-b-2 border-neutral-800 pb-1">
+              <div className="flex items-center justify-between border-b-2 border-neutral-300 pb-1 dark:border-neutral-800">
                 <p>Experiencia mínima</p>
                 <p>{offer.experienceMin.value}</p>
               </div>
-              <div className="flex items-center justify-between border-b-2 border-neutral-800 pb-1">
+              <div className="flex items-center justify-between border-b-2 border-neutral-300 pb-1 dark:border-neutral-800">
                 <p>Estudios mínimos</p>
                 <p>{offer.studiesMin.value}</p>
               </div>
-              <div className="flex items-center justify-between border-b-2 border-neutral-800 pb-1">
+              <div className="flex items-center justify-between border-b-2 border-neutral-300 pb-1 dark:border-neutral-800">
                 <p>Jornada</p>
                 <p>{offer.journey.value}</p>
               </div>

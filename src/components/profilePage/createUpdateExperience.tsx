@@ -76,7 +76,7 @@ const CreateUpdateExperience = (props: CreateUpdateExperienceProps) => {
       <DialogTrigger>
         <EditBtn
           border={props.status === "edit" ? false : true}
-          color={props.status === "edit" ? "text-green-200" : "text-yellow-200"}
+          color={props.status === "edit" ? "text-dark dark:text-green-200" : "text-dark dark:text-yellow-200"}
         />
       </DialogTrigger>
       <DialogContent>
