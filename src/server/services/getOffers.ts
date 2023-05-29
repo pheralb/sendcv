@@ -15,7 +15,7 @@ export async function getOffers() {
   const { items }: { items: APIResultOffer[] } = await res.json();
 
   const listOfOffers = items.map((item) => {
-    const { id, title, province, experienceMin, link, teleworking, author } =
+    const { id, title, province, experienceMin, link, teleworking, author, published } =
       item;
     return {
       id,
@@ -24,6 +24,7 @@ export async function getOffers() {
       experienceMin: experienceMin.value,
       infojobsUrl: link,
       teleworking: teleworking?.value ?? "No especificado",
+      published,
       author,
     };
   });
