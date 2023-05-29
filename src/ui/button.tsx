@@ -34,7 +34,7 @@ export const Button = (props: ButtonProps) => {
     >
       <div className="flex items-center justify-center">
         {props.loadingstatus && (
-          <Spinner className="mr-3 inline h-4 w-4" color="#ffff" />
+          <Spinner className="mr-3 inline h-4 w-4 text-neutral-500 dark:text-neutral-300" />
         )}
         {props.icon && !props.loadingstatus && (
           <span className="mr-3">{props.icon}</span>

@@ -13,7 +13,14 @@ interface GlobalLinkProps {
 }
 
 const Link = (props: GlobalLinkProps) => {
-  return <NextLink href={props.href}>{props.children}</NextLink>;
+  return (
+    <NextLink
+      href={props.href}
+      className={cn(props.underline && "hover:underline", props.className)}
+    >
+      {props.children}
+    </NextLink>
+  );
 };
 
 const ExternalLink = (props: GlobalLinkProps) => {
