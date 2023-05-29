@@ -10,6 +10,10 @@ export async function getOfferById(id: string) {
       Authorization: `Basic ${env.INFOJOBS_TOKEN}`,
     },
   });
+
   const data: iFullOffer = await res.json();
+
+  if (data?.error === "313") return null;
+
   return data;
 }

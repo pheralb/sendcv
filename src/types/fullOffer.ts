@@ -54,6 +54,7 @@ export interface iFullOffer {
   availableForVisualization: boolean;
   skillsList: SkillsList[];
   salaryDescription: string;
+  error?: string;
 }
 
 export interface Category {
