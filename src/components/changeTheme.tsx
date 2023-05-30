@@ -13,13 +13,13 @@ const ChangeTheme = () => {
     <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
       <SidebarItem
         icon={
-          theme === "light" ? (
+          theme !== "dark" ? (
             <SunIcon strokeWidth={iconStroke} size={iconSize} />
           ) : (
             <MoonIcon strokeWidth={iconStroke} size={iconSize} />
           )
         }
-        label={theme === "light" ? "Modo oscuro" : "Modo claro"}
+        label={theme !== "dark" ? "Modo oscuro" : "Modo claro"}
       />
     </button>
   );
