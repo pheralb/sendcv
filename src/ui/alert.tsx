@@ -19,7 +19,7 @@ const Alert = (props: AlertProps) => {
       )}
     >
       <div className="flex items-center space-x-1">
-        {props.color === "tip" && <span>{props.emoji ?? "✨"}</span>}
+        {props.color === "tip" && <span>{props.emoji ?? "💡"}</span>}
         <span>{props.children}</span>
       </div>
     </div>
