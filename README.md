@@ -21,7 +21,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 - [**Next.js 13 /app directory** + Typescript](https://nextjs.org/) - The React Framework for the Web.
 - [**Prisma**](https://www.prisma.io/) - Next-generation Node.js and TypeScript ORM.
-- [**Planetscale**](https://planetscale.com/) - The world’s most advanced serverless MySQL platform.
 - [**Next-Auth**](https://next-auth.js.org/) - Authentication for Next.js.
 - [**Next-Themes**](https://github.com/pacocoursey/next-themes) - Perfect Next.js dark mode in 2 lines of code.
 - [**@t3-oss/env-nextjs**](https://env.t3.gg/) - Framework agnostic validation for type-safe environment variables.
