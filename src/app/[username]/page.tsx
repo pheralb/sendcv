@@ -24,7 +24,9 @@ export async function generateMetadata({
   const url = env.NEXT_PUBLIC_APP_URL;
 
   const ogUrl = new URL(`${url}/api/og`);
-  ogUrl.searchParams.set("heading", user.name || "");
+  ogUrl.searchParams.set("title", user.name || "");
+  ogUrl.searchParams.set("username", user.username || "");
+  ogUrl.searchParams.set("image", user.image || "");
 
   return {
     title: `${user.name!} | Sendcv`,
@@ -33,7 +35,7 @@ export async function generateMetadata({
       title: `${user.name!} | Sendcv`,
       description: user.description!,
       type: "article",
-      url: absoluteUrl(`/dashboard/${user.username}`),
+      url: absoluteUrl(`/${user.username}`),
       images: [
         {
           url: ogUrl.toString(),
