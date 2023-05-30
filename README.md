@@ -2,11 +2,18 @@
 
 [**Sendcv**](https://sendcv.vercel.app) is a web app to explore jobs and create a beautiful profiles with your projects, social networks and experience. Inspired by [read.cv](https://read.cv/) ✨.
 
-## 🤔 Features
+## ✨ Features
 
 - Explore & save offers using Infojobs API.
 - Create a beautiful profile with your description, experience, projects & social networks.
+- CMDK to navigate between pages.
 - Light/dark theme.
+
+## 🤔 Known issues
+
+- [ ] Search job offers / users from the CMDK modal ([route](https://github.com/pheralb/sendcv/blob/main/src/components/search/index.tsx#L63)).
+- [ ] Button to change the light/dark mode on the main sidebar. Server/client side rendering ([route](https://github.com/pheralb/sendcv/blob/main/src/components/changeTheme.tsx#L13)).
+- [ ] Sometimes it does not show the tooltip in the sidebar ([route](https://github.com/pheralb/sendcv/blob/main/src/components/mainSidebar/sidebarItem.tsx#L20)).
 
 ## ⚙️ Stack
 
@@ -62,12 +69,12 @@ pnpm install
 pnpm postinstall
 
 # with yarn:
-yarn install 
+yarn install
 ```
 
 **Setup environment variables**:
 
-Create a ``.env`` file in the root folder of the project with the following variables:
+Create a `.env` file in the root folder of the project with the following variables:
 
 ```env
 # Prisma:
@@ -90,7 +97,7 @@ INFOJOBS_TOKEN=""
 - [`DATABASE_URL`](https://planetscale.com/docs/tutorials/connect-nextjs-app#generate-a-connection-string) - Planetscale docs.
 - [`GITHUB_CLIENT_ID` & `GITHUB_CLIENT_SECRET`](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) - Github OAuth docs.
 - [`INFOJOBS_CLIENT_ID` & `INFOJOBS_CLIENT_SECRET`](https://developer.infojobs.net/app/manage-app/create.xhtml) - Create an app on Infojobs.
-- [`INFOJOBS_TOKEN`](https://developer.infojobs.net/documentation/app-auth/index.xhtml) - In the *client credentials* section, enter the INFOJOBS_CLIENT_ID and the INFOJOBS_CLIENT_SECRET.
+- [`INFOJOBS_TOKEN`](https://developer.infojobs.net/documentation/app-auth/index.xhtml) - In the _client credentials_ section, enter the INFOJOBS_CLIENT_ID and the INFOJOBS_CLIENT_SECRET.
 
 **Open development server**:
 
@@ -104,7 +111,7 @@ npm run dev
 pnpm dev
 
 # with yarn:
-yarn dev 
+yarn dev
 ```
 
 2. Run to open Prisma Studio:
@@ -117,6 +124,9 @@ npm run studio
 pnpm studio
 
 # with yarn:
-yarn studio 
+yarn studio
 ```
 
+## 📝 License
+
+- Distributed under the Apache License 2.0. See [`LICENSE`](https://github.com/pheralb/sendcv/blob/main/LICENSE).
