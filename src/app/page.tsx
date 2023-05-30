@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
+
 import Container from "@/components/container";
 import JobOffer from "@/components/job/offer";
 
 import { getOffers } from "@/server/services/getOffers";
 import { getDays } from "@/utils/getDays";
+
+export const metadata: Metadata = {
+  title: "Explore - Sendcv",
+};
 
 export default async function Home() {
   const listOfOffers = await getOffers();
