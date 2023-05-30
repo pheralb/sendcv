@@ -86,7 +86,6 @@ model VerificationToken {
 model Offers {
     id          String   @id @default(cuid())
     title       String
-    description String
     infojobsUrl String
     author      String
     createdAt   DateTime @default(now())
