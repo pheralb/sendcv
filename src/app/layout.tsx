@@ -25,9 +25,10 @@ const calSans = localFont({
   preload: true,
 });
 
-// Providers:
+// Client Providers:
 import { ThemeProvider } from "@/providers/themeProvider";
 import SonnerProvider from "@/providers/sonnerProvider";
+import SessionProvider from "@/providers/sessionProvider";
 
 // Metadata:
 export const metadata: Metadata = {
@@ -92,9 +93,11 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SonnerProvider>
-            <Sidebar>{children}</Sidebar>
-          </SonnerProvider>
+          <SessionProvider>
+            <SonnerProvider>
+              <Sidebar>{children}</Sidebar>
+            </SonnerProvider>
+          </SessionProvider>
         </ThemeProvider>
       </body>
     </html>
