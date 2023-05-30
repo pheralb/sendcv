@@ -47,10 +47,10 @@ export const metadata: Metadata = {
   },
   // Open Graph:
   openGraph: {
-    title: "Next.js",
-    description: "The React Framework for the Web",
-    url: "https://nextjs.org",
-    siteName: "Next.js",
+    title: "Sendcv",
+    description: "Create a beautiful profile and explore job offers.",
+    url: "https://sendcv.vercel.app",
+    siteName: "Sendcv",
     type: "website",
     locale: "en_US",
     images: [

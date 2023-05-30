@@ -48,7 +48,7 @@ const Page = async () => {
           {offers?.map((offer) => (
             <div
               key={offer.id}
-              className="flex w-full items-center justify-between rounded-md border border-neutral-400 dark:border-neutral-700 p-4"
+              className="flex w-full items-center justify-between rounded-md border border-neutral-400 dark:border-neutral-800 p-4"
             >
               <div className="flex flex-col space-y-1">
                 <ExternalLink href={offer.infojobsUrl} externalIcon={true}>
