@@ -76,7 +76,11 @@ const CreateUpdateExperience = (props: CreateUpdateExperienceProps) => {
       <DialogTrigger>
         <EditBtn
           border={props.status === "edit" ? false : true}
-          color={props.status === "edit" ? "text-dark dark:text-green-200" : "text-dark dark:text-yellow-200"}
+          color={
+            props.status === "edit"
+              ? "text-dark dark:text-green-200"
+              : "text-dark dark:text-yellow-200"
+          }
         />
       </DialogTrigger>
       <DialogContent>
@@ -160,9 +164,7 @@ const CreateUpdateExperience = (props: CreateUpdateExperienceProps) => {
               <Input
                 type="date"
                 defaultValue={`${props.status === "edit" ? props.endDate : ""}`}
-                {...register("endDate", {
-                  required: "El inicio es obligatorio.",
-                })}
+                {...register("endDate")}
               />
             </FormGroup>
           </div>

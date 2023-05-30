@@ -35,7 +35,7 @@ const Page = () => {
         onClick={() => handleLogin("github")}
         loadingstatus={loading}
       >
-        <span>Continue with Github</span>
+        <span>Continuar con Github</span>
       </Button>
     </div>
   );

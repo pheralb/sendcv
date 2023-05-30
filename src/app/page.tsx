@@ -31,9 +31,6 @@ export default async function Home() {
                 <th scope="col" className="py-3 font-normal">
                   Oferta
                 </th>
-                <th scope="col" className="py-3 font-normal">
-                  Experiencia
-                </th>
                 <th scope="col" className="py-3"></th>
               </tr>
             </thead>
@@ -45,7 +42,11 @@ export default async function Home() {
                     getDays(b.published.toString())
                 )
                 .map((offer) => (
-                  <JobOffer key={offer.id} link={offer.infojobsUrl} {...offer} />
+                  <JobOffer
+                    key={offer.id}
+                    link={offer.infojobsUrl}
+                    {...offer}
+                  />
                 ))}
             </tbody>
           </table>

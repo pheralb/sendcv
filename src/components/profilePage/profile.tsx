@@ -137,12 +137,12 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
             <h3 className="text-xl font-medium">Proyectos</h3>
             {edit && <CreateUpdateProject status="create" {...experience} />}
           </div>
-          {projects ? (
+          {projects.length > 0 ? (
             <div className="mb-2 grid grid-cols-1 gap-2">
               {projects.map((project) => (
                 <div
                   key={project.id}
-                  className="flex flex-col space-y-1 rounded-md border border-neutral-300 dark:border-neutral-800 p-4"
+                  className="flex flex-col space-y-1 rounded-md border border-neutral-300 p-4 dark:border-neutral-800"
                 >
                   <div className="flex w-full items-center justify-between">
                     <ExternalLink href={project.url!} externalIcon={true}>
@@ -174,8 +174,8 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
             </div>
           ) : (
             <Alert color="tip">
-              No tienes una descripción, puedes agregar una haciendo click en el
-              icono del lapiz.
+              No tienes proyectos, puedes agregar uno haciendo click en el icono
+              del lapiz.
             </Alert>
           )}
         </div>
@@ -185,7 +185,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
             {edit && <CreateUpdateExperience status="create" {...experience} />}
           </div>
           <div className="text-neutral-400">
-            {experience ? (
+            {experience.length > 0 ? (
               <TimelineProvider>
                 {experience
                   .sort((a, b) => {
@@ -209,8 +209,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
               </TimelineProvider>
             ) : (
               <Alert color="tip">
-                No tienes una descripción, puedes agregar una haciendo click en
-                el icono del lapiz.
+                No tienes experiencia, puedes agregar una haciendo click en el icono del lapiz.
               </Alert>
             )}
           </div>

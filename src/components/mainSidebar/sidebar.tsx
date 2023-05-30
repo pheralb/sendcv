@@ -2,13 +2,13 @@ import type { ReactNode } from "react";
 import { Link } from "@/ui/link";
 import { cn } from "@/utils/cn";
 
-import Search from "@/ui/icons/search";
 import House from "@/ui/icons/house";
 
 import SidebarItem from "./sidebarItem";
 import ChangeTheme from "../changeTheme";
 import AuthForSidebar from "../auth/forSidebar";
 import About from "../about";
+import SearchDialog from "../search";
 
 interface SidebarProps {
   children: ReactNode;
@@ -21,10 +21,10 @@ const MainSidebarContent = () => {
   return (
     <nav
       className={cn(
-        "fixed overflow-y-auto overflow-x-hidden md:pb-10 z-50",
+        "fixed z-50 overflow-y-auto overflow-x-hidden bg-neutral-200/75 dark:bg-neutral-900 md:pb-10",
         "md:left-0 md:top-0 md:h-full md:w-14",
         "bottom-0 h-14 w-full",
-        "border-r border-neutral-300 dark:border-neutral-800"
+        "border-t border-neutral-300 dark:border-neutral-800 md:border-r"
       )}
     >
       <div
@@ -36,9 +36,7 @@ const MainSidebarContent = () => {
         <Link href="/">
           <SidebarItem icon={<House width={22} />} label="Inicio" />
         </Link>
-        <a>
-          <SidebarItem icon={<Search width={iconSize} />} label="Buscar" />
-        </a>
+        <SearchDialog />
         <ChangeTheme />
         <About />
         <AuthForSidebar />
