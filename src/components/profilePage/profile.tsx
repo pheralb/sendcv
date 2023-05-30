@@ -137,7 +137,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
             <h3 className="text-xl font-medium">Proyectos</h3>
             {edit && <CreateUpdateProject status="create" {...experience} />}
           </div>
-          {projects.length > 0 ? (
+          {projects && projects.length > 0 ? (
             <div className="mb-2 grid grid-cols-1 gap-2">
               {projects.map((project) => (
                 <div
@@ -185,7 +185,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
             {edit && <CreateUpdateExperience status="create" {...experience} />}
           </div>
           <div className="text-neutral-400">
-            {experience.length > 0 ? (
+            {experience && experience.length > 0 ? (
               <TimelineProvider>
                 {experience
                   .sort((a, b) => {
@@ -209,7 +209,8 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
               </TimelineProvider>
             ) : (
               <Alert color="tip">
-                No tienes experiencia, puedes agregar una haciendo click en el icono del lapiz.
+                No tienes experiencia, puedes agregar una haciendo click en el
+                icono del lapiz.
               </Alert>
             )}
           </div>

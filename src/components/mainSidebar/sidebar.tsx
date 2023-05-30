@@ -37,7 +37,7 @@ const MainSidebarContent = () => {
           <SidebarItem icon={<House width={22} />} label="Inicio" />
         </Link>
         <SearchDialog />
-        <ChangeTheme />
+        {/* <ChangeTheme /> */}
         <About />
         <AuthForSidebar />
       </div>

@@ -112,7 +112,7 @@ export default async function Page(props: ParamsProps) {
             </div>
           </div>
           <div className="flex items-center justify-between space-x-5">
-            {offer.skillsList.length > 0 && (
+            {offer.skillsList && offer.skillsList.length > 0 && (
               <div className="flex items-center space-x-2 overflow-x-auto">
                 {offer.skillsList.map((data) => (
                   <span
