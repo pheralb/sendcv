@@ -79,7 +79,7 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
                   <>
                     <span>-</span>
                     <ExternalLink href={user.website} externalIcon={true}>
-                      {user.website.split("/")[2]?.split("www.")?.[1]}
+                      {user.website.split("/")?.[2]}
                     </ExternalLink>
                   </>
                 )}
