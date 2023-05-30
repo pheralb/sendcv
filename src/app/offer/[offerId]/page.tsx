@@ -107,29 +107,31 @@ export default async function Page(props: ParamsProps) {
                       </ExternalLink>
                     </>
                   )}
-                  <SaveOffer
-                    id={offer.id}
-                    title={offer.title}
-                    author={offer.profile.name}
-                    infojobsUrl={offer.link}
-                  />
                 </div>
               </div>
             </div>
           </div>
-          {offer.skillsList.length > 0 && (
-            <div className="flex items-center space-x-2">
-              {offer.skillsList.map((data) => (
-                <span
-                  key={data.skill}
-                  title={data.skill}
-                  className="inline-block cursor-default truncate rounded-full bg-neutral-300 px-2 py-1 text-xs font-medium text-dark dark:bg-neutral-800 dark:text-white"
-                >
-                  {formatText(data.skill)}
-                </span>
-              ))}
-            </div>
-          )}
+          <div className="flex items-center justify-between space-x-5">
+            {offer.skillsList.length > 0 && (
+              <div className="flex items-center space-x-2 overflow-x-auto">
+                {offer.skillsList.map((data) => (
+                  <span
+                    key={data.skill}
+                    title={data.skill}
+                    className="cursor-default truncate rounded-full bg-neutral-300 px-2 py-1 text-xs font-medium text-dark dark:bg-neutral-800 dark:text-white"
+                  >
+                    {formatText(data.skill)}
+                  </span>
+                ))}
+              </div>
+            )}
+            <SaveOffer
+              id={offer.id}
+              title={offer.title}
+              author={offer.profile.name}
+              infojobsUrl={offer.link}
+            />
+          </div>
           <div className="border-t-2 border-neutral-300 pt-5 dark:border-neutral-800">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-xl font-medium">Descripción</h3>

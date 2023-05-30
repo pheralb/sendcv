@@ -3,6 +3,7 @@
 import { Button } from "@/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface DeleteOfferProps {
   id: string;
@@ -24,9 +25,12 @@ const DeleteOffer = (props: DeleteOfferProps) => {
           id: props.id,
         }),
       });
+      toast.success("Oferta guardada correctamente");
       router.refresh();
     } catch (error) {
-      console.error(error);
+      toast.error("No se ha podido eliminar la oferta", {
+        description: `${error}`,
+      });
     } finally {
       setLoading(false);
     }

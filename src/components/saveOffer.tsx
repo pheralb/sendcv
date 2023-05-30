@@ -1,7 +1,9 @@
 "use client";
 
 import { Button } from "@/ui/button";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface SaveOfferProps {
   id: string;
@@ -12,6 +14,7 @@ interface SaveOfferProps {
 
 const SaveOffer = (props: SaveOfferProps) => {
   const [loading, setLoading] = useState(false);
+  const session = useSession();
 
   const handleSaveOffer = async () => {
     try {
@@ -28,18 +31,21 @@ const SaveOffer = (props: SaveOfferProps) => {
           infojobsUrl: props.infojobsUrl,
         }),
       });
+      toast.success("Oferta guardada correctamente");
     } catch (error) {
-      console.error(error);
+      toast.error("No se ha podido guardar la oferta", {
+        description: `${error}`,
+      });
     } finally {
       setLoading(false);
     }
   };
 
-  return (
+  return session?.data?.user ? (
     <Button onClick={handleSaveOffer} loadingstatus={loading}>
-      Guardar oferta
+      Guardar
     </Button>
-  );
+  ) : null;
 };
 
 export default SaveOffer;
