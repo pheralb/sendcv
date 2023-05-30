@@ -5,6 +5,7 @@ import JobOffer from "@/components/job/offer";
 
 import { getOffers } from "@/server/services/getOffers";
 import { getDays } from "@/utils/getDays";
+import { Link } from "@/ui/link";
 
 export const metadata: Metadata = {
   title: "Explore - Sendcv",
@@ -14,15 +15,23 @@ export default async function Home() {
   const listOfOffers = await getOffers();
   return (
     <>
-      <section className="mb-5 border-b border-neutral-300 dark:border-neutral-800">
-        <div className="grid max-w-screen-xl p-12 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
-          <div className="mr-auto place-self-center lg:col-span-7">
-            <h1 className="mb-4 max-w-2xl text-4xl font-bold leading-none tracking-tight dark:text-white md:text-5xl xl:text-5xl">
-              Sendcv
+      <section className="mb-2 border-b border-neutral-300 dark:border-neutral-800">
+        <div className="mx-auto px-4 py-32 lg:flex lg:items-center">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="font-heading text-3xl font-medium text-dark animate-in fade-in-20 duration-400 dark:text-white sm:text-5xl">
+              Crea un perfil profesional
             </h1>
-            <p className="mb-6 max-w-2xl font-light text-gray-500 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl">
-              Crea tu perfil y encuentra tu próximo empleo.
+            <p className="mx-auto mt-2 max-w-xl sm:text-xl/relaxed">
+              y comparte tus redes sociales, proyectos y experiencias
             </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link
+                className="block w-full rounded border border-neutral-300 px-4 py-2 text-center text-neutral-700 transition duration-150 ease-in-out hover:bg-neutral-50 dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                href="/auth"
+              >
+                ✨ Crear perfil
+              </Link>
+            </div>
           </div>
         </div>
       </section>
