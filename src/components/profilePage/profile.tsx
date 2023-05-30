@@ -113,24 +113,26 @@ const Profile = ({ user, edit, experience, projects }: ProfileProps) => {
         <div className="border-t-2 border-neutral-300 pt-5 dark:border-neutral-800">
           <div className="mb-2 flex items-center justify-between">
             <h3 className="text-xl font-medium">Sobre mi</h3>
-            {edit && <EditAboutMeProfile description={user.description!} />}
+            {edit && (
+              <EditAboutMeProfile description={user.description! || ""} />
+            )}
           </div>
-          <p className="dark:text-neutral-400">
-            {edit ? (
-              user.description ? (
-                user.description
-              ) : (
-                <Alert color="tip">
+          {user.description ? (
+            <p className="text-neutral-500 dark:text-neutral-400">
+              {user.description}
+            </p>
+          ) : (
+            <Alert color="tip">
+              {edit ? (
+                <>
                   No tienes una descripción, puedes agregar una haciendo click
                   en el icono del lapiz.
-                </Alert>
-              )
-            ) : user.description ? (
-              user.description
-            ) : (
-              <Alert color="tip">Este usuario no tiene una descripción.</Alert>
-            )}
-          </p>
+                </>
+              ) : (
+                <>No hay descripción.</>
+              )}
+            </Alert>
+          )}
         </div>
         <div className="border-t-2 border-neutral-300 pt-5 dark:border-neutral-800">
           <div className="mb-4 flex items-center justify-between">
