@@ -1,4 +1,5 @@
 "use client";
+import type { Metadata } from "next";
 
 import { useState } from "react";
 import { cn } from "@/utils/cn";
@@ -7,6 +8,10 @@ import { signIn } from "next-auth/react";
 import { Button } from "@/ui/button";
 import { toast } from "sonner";
 import { GithubIcon } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Auth - Sendcv",
+};
 
 const Page = () => {
   const [loading, setLoading] = useState(false);

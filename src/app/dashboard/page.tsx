@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
+
 import { notFound } from "next/navigation";
 import Profile from "@/components/profilePage/profile";
 import { Link } from "lucide-react";
 import { getCurrentAuthUser } from "@/server/services/getCurrentAuthUser";
+
+export const metadata: Metadata = {
+  title: "Dashboard - Sendcv",
+};
 
 const ProfileApp = async () => {
   const user = await getCurrentAuthUser();
