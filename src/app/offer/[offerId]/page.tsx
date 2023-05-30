@@ -1,3 +1,4 @@
+import SaveOffer from "@/components/saveOffer";
 import { getOfferById } from "@/server/services/getOfferById";
 import { ExternalLink, Link } from "@/ui/link";
 import Infojobs from "@/ui/logos/infojobs";
@@ -20,9 +21,11 @@ interface ParamsProps {
 
 export default async function Page(props: ParamsProps) {
   const offer = await getOfferById(props.params.offerId);
+
   if (!offer || offer === null) {
     return notFound();
   }
+
   return (
     <>
       <div className="sticky top-0 mt-1 flex w-full items-center justify-between border-b border-neutral-300 bg-neutral-200 px-6 py-3 text-sm dark:border-neutral-800 dark:bg-neutral-900/90">
@@ -104,6 +107,12 @@ export default async function Page(props: ParamsProps) {
                       </ExternalLink>
                     </>
                   )}
+                  <SaveOffer
+                    id={offer.id}
+                    title={offer.title}
+                    author={offer.profile.name}
+                    infojobsUrl={offer.link}
+                  />
                 </div>
               </div>
             </div>
